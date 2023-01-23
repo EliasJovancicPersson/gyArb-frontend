@@ -1,4 +1,6 @@
-function Navigation(){
+import { Link } from "react-router-dom";
+
+function Navigation() {
     return(
     <nav>
 		<ul>
@@ -15,9 +17,9 @@ function Navigation(){
 			</li>
 			<li class="links">
 				<div class="link-container">
-					<a href="/index.html">Hem</a>
-					<a href="/src/html/work-list.html">Utforska</a>
-					<a href="/src/html/login.html" id="loggin">Logga in</a>
+						<Link to={"/"}>Hem</Link>
+						<Link to={"/work"}>Arbeten</Link>
+						<Link to={"/loggin"}>Logga in</Link>
 				</div>
 			</li>
 		</ul>

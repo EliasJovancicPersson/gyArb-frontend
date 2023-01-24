@@ -1,6 +1,7 @@
 import BookPaper from "../images/BookPaper.jpg"
 import Logo from "../images/Logo.png"
 import Writing from "../images/Writing.jpg"
+import "./styles/HomePage.css"
 
 function HomePage(){
     return (

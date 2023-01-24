@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import "./styles/Navigation.css"
 
 function Navigation() {
     return(
@@ -19,7 +20,7 @@ function Navigation() {
 				<div class="link-container">
 						<Link to={"/"}>Hem</Link>
 						<Link to={"/work"}>Arbeten</Link>
-						<Link to={"/loggin"}>Logga in</Link>
+						<Link to={"/login"}>Logga in</Link>
 				</div>
 			</li>
 		</ul>

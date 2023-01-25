@@ -5,6 +5,10 @@ function WorkList() {
 	let url = "https://gyarb-backend.azurewebsites.net/wiki"; //ändra url här för att söka med olika querys
 
 	let [data,setData] = useState(null)
+
+	let elemPerPage = 6
+
+	let page = 1
 	//setData(data.projects)
 
 	useEffect(()=>{
@@ -14,13 +18,14 @@ function WorkList() {
 		}).then(response => response.json())
 	  	.then((data) => {
 			let chunks = []
-			for (let index = 0; index < data.projects.length; index += 10) {
-				const chunk = data.projects.slice(index,index+10)
+			for (let index = 0; index < data.projects.length; index += elemPerPage) {
+				const chunk = data.projects.slice(index,index+elemPerPage)
 				chunks.push(chunk)
 			}
 			console.log(chunks) //each chunk represents one page
+			setData(chunks)
 		})
-	})
+	},[])
 
     return (
         <div className="container column-center">
@@ -30,8 +35,8 @@ function WorkList() {
 
 			<div className="work-list">
 				{
-					data && data.map((element) => 
-					<a className="work-link">
+					data && data[page - 1].map((element,i) => 
+					<a className="work-link" key={i}>
 						<div className="title">
 								<h3>{element.title}</h3>
 						</div>

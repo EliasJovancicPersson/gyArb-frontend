@@ -9,7 +9,6 @@ function WorkList() {
 	let elemPerPage = 6
 
 	let page = 1
-	//setData(data.projects)
 
 	useEffect(()=>{
 		fetch(url, {

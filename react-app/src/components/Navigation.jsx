@@ -5,19 +5,19 @@ function Navigation() {
     return(
     <nav>
 		<ul>
-			<li class="logo">
+			<li className="logo">
 				<img src="" alt="" />
 			</li>
 			<li>
-				<div class="searchWrapper">
+				<div className="searchWrapper">
                     <input type="search" placeholder="Sök på arbeten"/>
-					<span class="material-symbols-outlined" id="search">
+					<span className="material-symbols-outlined" id="search">
 						search
 					</span>
 				</div>
 			</li>
-			<li class="links">
-				<div class="link-container">
+			<li className="links">
+				<div className="link-container">
 						<Link to={"/"}>Hem</Link>
 						<Link to={"/work"}>Arbeten</Link>
 						<Link to={"/login"}>Logga in</Link>

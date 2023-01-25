@@ -1,13 +1,12 @@
 import BookPaper from "../images/BookPaper.jpg"
-import Logo from "../images/Logo.png"
 import Writing from "../images/Writing.jpg"
 import "./styles/HomePage.css"
 
 function HomePage(){
     return (
-        <div class="container column-center">
-		<div class="intro">
-			<div class="intro-txt">
+        <div className="container column-center">
+		<div className="intro">
+			<div className="intro-txt">
 				<h2>Har du svårt för gymnasiearbeteet?</h2>
 				<p>
 					Om du har svårt för ditt gymnasiearbete kan vår hemsida vara en bra
@@ -18,27 +17,27 @@ function HomePage(){
 					hitta lösningar på dina utmaningar.
 				</p>
 			</div>
-			<div class="image">
+			<div className="image">
 				<img src={BookPaper}alt="Book and paper" />
 			</div>
 		</div>
-		<div class="intro-tripple">
-			<div class="container row-center">
-				<div class="image">
+		<div className="intro-tripple">
+			<div className="container row-center">
+				<div className="image">
 					<img src={BookPaper} alt="" />
 					<p>
 						Ladda upp ditt arbete på vår hemsida och be om feedback och råd
 						från andra studenter och lärare
 					</p>
 				</div>
-				<div class="image">
+				<div className="image">
 					<img src={BookPaper} alt="" />
 					<p>
 						Sök igenom andras gymnasiearbeten på våran hemsida för att få
 						inspiration och idéer
 					</p>
 				</div>
-				<div class="image">
+				<div className="image">
 					<img src={BookPaper} alt="" />
 					<p>
 						Använd vår hemsida för att hitta olika verktyg och resurser som
@@ -47,11 +46,11 @@ function HomePage(){
 				</div>
 			</div>
 		</div>
-		<div class="intro">
-			<div class="image">
+		<div className="intro">
+			<div className="image">
 				<img src={Writing} alt="Book and paper" />
 			</div>
-			<div class="intro-txt">
+			<div className="intro-txt">
 				<h2>Vet du inte vad du ska skriva om?</h2>
 				<p>
 					våran hemsida är en bra resurs för att hitta inspiration och idéer
@@ -62,8 +61,8 @@ function HomePage(){
 				</p>
 			</div>
 		</div>
-		<div class="intro">
-			<div class="intro-txt">
+		<div className="intro">
+			<div className="intro-txt">
 				<h2>Får du inte tillräckligt med hjälp?</h2>
 				<p>
 					Istället för att endast förlita sig på skolan för hjälp med ditt
@@ -74,7 +73,7 @@ function HomePage(){
 					för inspiration och idéer.
 				</p>
 			</div>
-			<div class="image">
+			<div className="image">
 				<img src={BookPaper} alt="Book and paper" />
 			</div>
 		</div>

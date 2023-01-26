@@ -8,9 +8,11 @@ function WorkList() {
 
 	let [data,setData] = useState(null)
 
-	let elemPerPage = 6
+	let elemPerPage = 9
 
-	let page = 1
+	const [page,setPage] = useState(1)
+
+	let input = document.getElementById("page")
 
 	useEffect(()=>{
 		fetch(url, {
@@ -43,7 +45,11 @@ function WorkList() {
 						</div>
 					</Link>)
 				}
-				<input type="number" name="page" id="page" defaultValue="1" min="1"/>
+				<div className="pageController">
+					<button onClick={()=>{if(page - 1 > 0){setPage(page - 1); input.value = page-1}}}>-</button>
+					<input type="number" name="page" id="page" min="1" defaultValue={1} max={page.length} onChange={e => e.target.value > 0 ? setPage(e.target.value) : false}/>
+					<button onClick={()=>{if(page < data.length){setPage(page + 1); input.value = page+1}}}>+</button>
+				</div>
 			</div>
 		</div>
 		<a href="/src/html/work-upload.html" className="upload">

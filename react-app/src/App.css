@@ -121,21 +121,3 @@ footer ul li a{
   text-decoration: underline;
 }
 
-@media screen and (max-width: 1750px){
-  :root{
-      --page-width:85vw;
-  }
-  body{
-      overflow-y: scroll;
-  }
-}
-
-@media screen and (max-width: 1450px){
-  :root{
-      --page-width:100vw;
-  }
-  body{
-      overflow-y: scroll;
-  }
-}
-

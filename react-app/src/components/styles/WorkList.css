@@ -18,12 +18,12 @@
 
 .gyarb{
     margin: 30px;
-    width: var(--page-width);
+    width: 90vw;
     overflow-y: hidden;
     overflow-x: hidden;
 
     display: flex;
-    height: var(--main-element-hight);
+    height: auto;
 }
 
 .work-link{
@@ -35,6 +35,7 @@
     padding: 25px;
     display: flex;
     justify-content: space-between;
+    color: white;
 }
 
 body{

@@ -1,31 +1,37 @@
+import { useContext } from "react";
 import { useState } from "react";
 import "./styles/Login.css"
 
 async function loginUser(credentials) {
- return fetch('https://gyarb-backend.azurewebsites.net/login', {
-   method: 'POST',
-   headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-    },
-   credentials:"include",
-   body: new URLSearchParams({
-      email: credentials.email,
-      password: credentials.password,
-    }),
- })
-   .then(data => data.status == "200" ? localStorage.setItem("authenticated", true):localStorage.setItem("authenticated",false))
+    return fetch('https://gyarb-backend.azurewebsites.net/login', {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        credentials: "include",
+        body: new URLSearchParams({
+            email: credentials.email,
+            password: credentials.password,
+        }),
+    })
 }
 
-function Login() {
+function Login(props) {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
 
     const handleSubmit = async e => {
     e.preventDefault();
-    loginUser({
+    const response = await loginUser({
       email,
       password
-    })
+    }).then((response) => {
+        if (response.status == 200) {
+            props.func(true)
+        }
+        else {
+            props.func(false)
+    }})
     }
 
     return (

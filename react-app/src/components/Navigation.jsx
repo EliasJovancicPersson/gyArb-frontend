@@ -4,9 +4,8 @@ import "./styles/Navigation.css"
 
 
 
-function Navigation() {
-	const [auth, setAuth] = useState(null)
-	
+function Navigation(props) {
+
     return(
     <nav>
 		<ul>
@@ -24,8 +23,9 @@ function Navigation() {
 			<li className="links">
 				<div className="link-container">
 						<Link to={"/"}>Hem</Link>
-						{auth && <Link to={"/work"}>Arbeten</Link>}
-						{!auth && <Link to={"/login"}>Logga in</Link>}
+						{props.isLoggedIn && <Link to={"/work"}>Arbeten</Link>}
+						{props.isLoggedIn && <Link to={"/profile"}>Profil</Link>}
+						{!props.isLoggedIn && <Link to={"/login"}>Logga in</Link>}
 				</div>
 			</li>
 		</ul>

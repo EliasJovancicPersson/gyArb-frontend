@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles/Navigation.css"
 
+
+
 function Navigation() {
+	const [auth, setAuth] = useState(null)
+	
     return(
     <nav>
 		<ul>
@@ -19,8 +24,8 @@ function Navigation() {
 			<li className="links">
 				<div className="link-container">
 						<Link to={"/"}>Hem</Link>
-						<Link to={"/work"}>Arbeten</Link>
-						<Link to={"/login"}>Logga in</Link>
+						{auth && <Link to={"/work"}>Arbeten</Link>}
+						{!auth && <Link to={"/login"}>Logga in</Link>}
 				</div>
 			</li>
 		</ul>

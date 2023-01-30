@@ -3,8 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 
 
-function WorkList() {
-	let url = "https://gyarb-backend.azurewebsites.net/wiki"; //ändra url här för att söka med olika querys
+function WorkList(props) {
+	let url = "https://gyarb-backend.azurewebsites.net/wiki/search?"+props.query; //ändra url här för att söka med olika querys <search?author=123>
 
 	let [data,setData] = useState(null)
 
@@ -25,16 +25,23 @@ function WorkList() {
 				const chunk = data.projects.slice(index,index+elemPerPage)
 				chunks.push(chunk)
 			}
+			if(
+				chunks.length>0
+			){
 			setData(chunks) //each chunk represents one page
+			}
+			else{
+
+			}
 		})
 	},[])
 
     return (
-        <div className="container column-center">
+        <>
 		<div className="gyarb">
 			<div className="work-list">
 				{
-					data && data[page - 1].map((element,i) =>  //data && is a if statement to only render if the data is present
+					data ? data[page - 1].map((element,i) =>  //data && is a if statement to only render if the data is present
 					<Link className="work-link" key={i} to={"/work/"+element._id}>
 						<div className="title">
 								<h3>{element.title}</h3>
@@ -43,19 +50,31 @@ function WorkList() {
 								<h3>{element.author}</h3>
 								<h3>{element.subject}</h3>
 						</div>
-					</Link>)
+					</Link>):
+					
+					<Link className="work-link" key={1} >
+						<div className="title">
+								<h3>Inga arbeten hittades</h3>
+						</div>
+						<div className="author">
+								<h3>Författare</h3>
+								<h3>Ämne</h3>
+						</div>
+					</Link>
+					
 				}
-				<div className="pageController">
+
+				{data && <div className="pageController">
 					<button onClick={()=>{if(page - 1 > 0){setPage(page - 1); input.value = page-1}}}>-</button>
 					<input type="number" name="page" id="page" min="1" defaultValue={1} max={page.length} onChange={e => e.target.value > 0 ? setPage(e.target.value) : false}/>
 					<button onClick={()=>{if(page < data.length){setPage(page + 1); input.value = page+1}}}>+</button>
-				</div>
+				</div>}
 			</div>
 		</div>
 		<a href="/src/html/work-upload.html" className="upload">
 			<p>Ladda upp</p>
 		</a>
-	</div>
+	</>
     )
 }
 

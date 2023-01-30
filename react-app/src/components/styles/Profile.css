@@ -1,0 +1,11 @@
+.works{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+}
+.works h2{
+    border-bottom: solid;
+    font-size: 28px;
+}

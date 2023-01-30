@@ -5,7 +5,7 @@ import "./styles/Navigation.css"
 
 
 function Navigation(props) {
-
+	console.log(props.user)
     return(
     <nav>
 		<ul>
@@ -24,7 +24,7 @@ function Navigation(props) {
 				<div className="link-container">
 						<Link to={"/"}>Hem</Link>
 						{props.isLoggedIn && <Link to={"/work"}>Arbeten</Link>}
-						{props.isLoggedIn && <Link to={"/profile"}>Profil</Link>}
+						{props.isLoggedIn && <Link to={"/profile/"+props.user.id}>Profil</Link>}
 						{!props.isLoggedIn && <Link to={"/login"}>Logga in</Link>}
 				</div>
 			</li>

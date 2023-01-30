@@ -17,13 +17,19 @@
 }
 
 .gyarb{
-    margin: 30px;
-    width: 90vw;
+    justify-self: center;
+    align-self: center;
+    margin: 20px;
     max-height: 80vh;
-    overflow-y: scroll;
+    width: calc(100% - 40px);
     overflow-x: hidden;
 
+
     display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     height: auto;
 }
 
@@ -52,6 +58,7 @@ body{
 
 .work-list{
     flex:1;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;

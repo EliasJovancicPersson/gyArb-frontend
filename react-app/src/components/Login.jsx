@@ -1,9 +1,9 @@
-import { useContext } from "react";
 import { useState } from "react";
+import { json } from "react-router-dom";
 import "./styles/Login.css"
 
 async function loginUser(credentials) {
-    return fetch('https://gyarb-backend.azurewebsites.net/login', {
+    return fetch('https://gyarb-backend.azurewebsites.net/auth/login', {
         method: 'POST',
         headers: {
             "Content-Type": "application/x-www-form-urlencoded",
@@ -22,17 +22,30 @@ function Login(props) {
 
     const handleSubmit = async e => {
     e.preventDefault();
-    const response = await loginUser({
+    await loginUser({
       email,
       password
-    }).then((response) => {
-        if (response.status == 200) {
-            props.func(true)
+    }).then((response)=>{
+        if(!response.ok){
+            throw new Error(
+                response.status + " " + response.statusText
+            )
         }
-        else {
-            props.func(false)
-    }})
+        else return response
     }
+    ).then((response) => response.json()).then((response)=>{
+        if(response.authenticated){
+            props.func(true)
+            localStorage.setItem("user",JSON.stringify(response.user))
+            //JSON.parse(localStorage.getItem("user"))  to get user object
+        }
+        else{
+            props.func(false)
+        }
+    }).catch((err) =>{
+        console.log(err)
+    })
+}
 
     return (
         <div className="container column-center">

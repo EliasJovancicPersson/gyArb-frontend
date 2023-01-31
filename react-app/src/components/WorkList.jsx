@@ -12,7 +12,7 @@ function WorkList(props) {
 
 	const [page,setPage] = useState(1)
 
-	let input = document.getElementById("page")
+	const [input,setInput] = useState()
 
 	useEffect(()=>{
 		fetch(url, {
@@ -65,9 +65,9 @@ function WorkList(props) {
 				}
 
 				{data && <div className="pageController">
-					<button onClick={()=>{if(page - 1 > 0){setPage(page - 1); input.value = page-1}}}>-</button>
-					<input type="number" name="page" id="page" min="1" defaultValue={1} max={page.length} onChange={e => e.target.value > 0 ? setPage(e.target.value) : false}/>
-					<button onClick={()=>{if(page < data.length){setPage(page + 1); input.value = page+1}}}>+</button>
+					<button onClick={()=>{if(page - 1 > 0){setPage(page - 1); }}}>-</button>
+					<input type="number" name="page" id="page" min="1" value={page} max={page.length} readOnly/>
+					<button onClick={()=>{if(page < data.length){setPage(page + 1); }}}>+</button>
 				</div>}
 			</div>
 		</div>

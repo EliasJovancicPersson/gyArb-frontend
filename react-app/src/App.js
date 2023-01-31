@@ -17,7 +17,7 @@ function App() {
     //function is passed to login component
     setSignedIn(bool);
     localStorage.setItem("authenticated", bool);
-	navigate("/")
+	  navigate("/")
   }
 
   function CheckLoggedIn() {

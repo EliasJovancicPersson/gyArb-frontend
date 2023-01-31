@@ -13,9 +13,15 @@ function Profile(props){
             <WorkList query={"author="+user.name}/>
         </div>
         <div className="settings">
-            <button onClick={()=>{
-                props.func(false)
-                console.log("logging out")
+            <button onClick={async ()=>{
+                await fetch("https://gyarb-backend.azurewebsites.net/auth/logout",{
+                    method: "POST",	
+                    credentials: "include",
+                }).then(()=>{
+                    props.func(false)
+                })
+                
+                
             }}>Logga ut</button>
         </div>
         </>

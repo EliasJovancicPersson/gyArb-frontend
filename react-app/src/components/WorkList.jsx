@@ -71,9 +71,6 @@ function WorkList(props) {
 				</div>}
 			</div>
 		</div>
-		<a href="/src/html/work-upload.html" className="upload">
-			<p>Ladda upp</p>
-		</a>
 	</>
     )
 }

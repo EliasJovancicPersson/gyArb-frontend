@@ -8,7 +8,7 @@ function WorkList(props) {
 
 	let [data,setData] = useState(null)
 
-	let elemPerPage = 9
+	let elemPerPage = props.maxResults
 
 	const [page,setPage] = useState(1)
 

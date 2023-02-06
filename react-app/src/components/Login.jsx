@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { json } from "react-router-dom";
+import { json, Link } from "react-router-dom";
 import "./styles/Login.css"
 
 async function loginUser(credentials) {
@@ -57,7 +57,7 @@ function Login(props) {
                 <input type="submit" value="Login" id="login" />
                 <div className="signup-form">
                     <p>Inget Konto?</p>
-                    <a href="signup.html">Registrera dig</a>
+                    <Link to={"/signup"}>Registrera dig</Link>
                 </div>
             </form>
         </div>

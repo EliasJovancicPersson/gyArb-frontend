@@ -5,6 +5,7 @@ import WorkList from "./components/WorkList";
 import Login from "./components/Login";
 import Work from "./components/Work";
 import Profile from "./components/Profile";
+import Signup from "./components/Signup";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useEffect } from "react";
@@ -17,7 +18,7 @@ function App() {
     //function is passed to login component
     setSignedIn(bool);
     localStorage.setItem("authenticated", bool);
-	  navigate("/")
+    navigate("/");
   }
 
   function CheckLoggedIn() {
@@ -38,8 +39,9 @@ function App() {
       />
       <Routes>
         <Route exact path="/" element={<HomePage />} />
-        <Route exact path="/work" element={<WorkList />} />
+        <Route exact path="/work" element={<WorkList maxResults={9} />} />
         <Route path="/login" element={<Login func={SetLoggedIn} />} />
+        <Route path="/signup" element={<Signup />} />
         <Route path="/work/:projId" element={<Work />} />
         <Route
           path="/profile/:profileId"

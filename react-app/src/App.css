@@ -1,80 +1,160 @@
 /*reset*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-:root{
-  --page-width:90vw;
-  --main-element-hight:60vh;
-  --main-color:  #306e42;
-  --secondary-color: #304235;
-  --accent-color: #256c4a;
-  --card-color:#ffffff;
-  
-  --fs-1:40px;
-  --fs-2:30px;
-  --fs-3:18px;
+:root {
+  --page-width: 90vw;
+  --main-element-hight: 60vh;
+  --main-color: #ffffff;
+  --secondary-color: #4a4a4a;
+  --accent-color: rgb(167, 199, 231);
+  --card-color: rgb(167, 199, 231);
 
-  --img-margin-padding:10px;
+  --fs-1: 40px;
+  --fs-2: 30px;
+  --fs-3: 18px;
+
+  --img-margin-padding: 10px;
 }
-body{
-  font-family:  "sans-serif";
-  color: white;
+body {
+  font-family: 'sans-serif';
+  color: black;
   margin: 0;
   padding: 0;
   height: 100vh;
   min-width: 100vw;
-  background-color: var(--secondary-color);
+  background-color: var(--main-color);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background-image: linear-gradient(var(--main-color), black);
 }
 /*
 FOOTER
 */
-footer{
+footer {
   position: relative;
   bottom: 0;
   width: 100vw;
@@ -82,43 +162,41 @@ footer{
   background-color: var(black);
   z-index: 50;
   display: flex;
-  justify-content:space-between;
+  justify-content: space-between;
   align-items: center;
   color: white;
 }
 
-footer ul{
+footer ul {
   list-style: none;
 }
 
-footer ul li a{
+footer ul li a {
   color: white;
   text-decoration: none;
 }
 
-.footer-links{
+.footer-links {
   font-size: var(--fs-2);
   display: flex;
 }
 
-.footer-links a{
+.footer-links a {
   margin: 3rem;
   padding: 10px;
 }
 
-.footer-links a:hover{
+.footer-links a:hover {
   text-decoration: underline;
 }
 
 .footer-contact {
   font-size: var(--fs-1);
   margin: 3rem;
-  
 }
 
-.footer-contact h3{
+.footer-contact h3 {
   margin: 0;
   margin-bottom: 10px;
   text-decoration: underline;
 }
-

@@ -57,7 +57,6 @@ function Login(props) {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="email"
             id="email"
-            defaultValue="test@gmail.com"
           />
           <input
             type="password"
@@ -65,7 +64,6 @@ function Login(props) {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="lösenord"
             id="password"
-            defaultValue="password"
           />
           <input type="submit" value="Login" id="login" />
           <div className="signup-form">

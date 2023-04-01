@@ -1,6 +1,7 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './styles/Navigation.css';
+import Search from '../images/Icons/Search.svg';
 
 function Navigation(props) {
   return (
@@ -12,9 +13,7 @@ function Navigation(props) {
         <li>
           <div className="searchWrapper">
             <input type="search" placeholder="Sök på arbeten" />
-            <span className="material-symbols-outlined" id="search">
-              search
-            </span>
+            <img src={Search} alt="Search icon" className="search" />
           </div>
         </li>
         <li className="links">
@@ -29,5 +28,10 @@ function Navigation(props) {
     </nav>
   );
 }
+
+Navigation.propTypes = {
+  isLoggedIn: PropTypes.bool,
+  user: PropTypes.object
+};
 
 export default Navigation;

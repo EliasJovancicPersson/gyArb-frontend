@@ -1,9 +1,9 @@
-import './styles/Profile.css';
-import WorkList from './WorkList';
-import PropTypes from 'prop-types';
+import './styles/Profile.css'
+import WorkList from './WorkList'
+import PropTypes from 'prop-types'
 
-function Profile(props) {
-  const user = JSON.parse(localStorage.getItem('user'));
+function Profile (props) {
+  const user = JSON.parse(localStorage.getItem('user'))
 
   return (
     <>
@@ -25,8 +25,8 @@ function Profile(props) {
                   method: 'POST',
                   credentials: 'include'
                 }).then(() => {
-                  props.func(false);
-                });
+                  props.func(false)
+                })
               }}>
               Logga ut
             </button>
@@ -38,11 +38,11 @@ function Profile(props) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 Profile.propTypes = {
   func: PropTypes.function
-};
+}
 
-export default Profile;
+export default Profile

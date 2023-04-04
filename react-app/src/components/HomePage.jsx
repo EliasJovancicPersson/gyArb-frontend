@@ -1,8 +1,8 @@
-import BookPaper from '../images/BookPaper.jpg';
-import Writing from '../images/Writing.jpg';
-import './styles/HomePage.css';
+import BookPaper from '../images/BookPaper.jpg'
+import Writing from '../images/Writing.jpg'
+import './styles/HomePage.css'
 
-function HomePage() {
+function HomePage () {
   return (
     <div className="container column-center">
       <div className="page">
@@ -76,7 +76,7 @@ function HomePage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default HomePage;
+export default HomePage

@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import './styles/Navigation.css';
-import Search from '../images/Icons/Search.svg';
+import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'
+import './styles/Navigation.css'
+import Search from '../images/Icons/Search.svg'
 
-function Navigation(props) {
+function Navigation (props) {
   return (
     <nav>
       <ul>
@@ -26,12 +26,12 @@ function Navigation(props) {
         </li>
       </ul>
     </nav>
-  );
+  )
 }
 
 Navigation.propTypes = {
   isLoggedIn: PropTypes.bool,
   user: PropTypes.object
-};
+}
 
-export default Navigation;
+export default Navigation

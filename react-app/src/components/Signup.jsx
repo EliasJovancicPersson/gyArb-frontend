@@ -1,14 +1,14 @@
-import './styles/Signup.css';
-import { Link, Navigate } from 'react-router-dom';
-import { useState } from 'react';
+import './styles/Signup.css'
+import { Link, Navigate } from 'react-router-dom'
+import { useState } from 'react'
 
-function Signup() {
-  const [email, setEmail] = useState();
-  const [password, setPassword] = useState();
-  const [username, setUsername] = useState();
+function Signup () {
+  const [email, setEmail] = useState()
+  const [password, setPassword] = useState()
+  const [username, setUsername] = useState()
 
   // eslint-disable-next-line no-unused-vars
-  async function SignupUser(credentials) {
+  async function SignupUser (credentials) {
     return fetch('https://gyarb-backend.azurewebsites.net/auth/signup', {
       method: 'POST',
       headers: {
@@ -19,23 +19,23 @@ function Signup() {
         email: credentials.email,
         password: credentials.password
       })
-    });
+    })
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     await SignupUser({ email, password, username, name })
       .then((response) => {
         if (!response.ok) {
-          throw new Error(response.status + ' ' + response.statusText);
+          throw new Error(response.status + ' ' + response.statusText)
         } else {
-          return response;
+          return response
         }
       })
       .then(() => {
-        Navigate('/login');
-      });
-  };
+        Navigate('/login')
+      })
+  }
 
   return (
     <div className="container column-center">
@@ -71,7 +71,7 @@ function Signup() {
         </form>
       </div>
     </div>
-  );
+  )
 }
 
-export default Signup;
+export default Signup

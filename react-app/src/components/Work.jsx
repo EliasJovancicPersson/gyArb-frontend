@@ -3,9 +3,12 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import { useState, useEffect } from 'react'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 function Work () {
-  const projId = 'e87f5a2f-eba7-48cd-8539-b3b2372ae0ab'
+  const projId = '2c478253-c00e-44f2-b17c-ba42e1131821'
   const url = 'https://gyarb-backend.azurewebsites.net/wiki/' + projId
   const [data, setData] = useState(null)
+  const [pagesMax, setPagesMax] = useState(null)
+  const [page, setPage] = useState(1)
+
   useEffect(() => {
     fetch(url, {
       method: 'GET',
@@ -17,21 +20,44 @@ function Work () {
       })
   }, [])
 
+  function pageHandler (num) {
+    if (page + num <= pagesMax && page + num >= 1) {
+      setPage(page + num)
+    }
+  }
+
+  function handleChange (e) {
+    if (e.target.value <= pagesMax && e.target.value >= 1) {
+      setPage(+e.target.value)
+      console.log('set page')
+    } else {
+      e.target.value = null
+    }
+  }
+
+  function handleFocus (e) {
+    e.target.select()
+  }
+
   if (data) {
-    console.log()
     return (
       <div className="work-container">
-        <><div className="pdf-container">
+        <div className="pdf-container">
           <Document
+            onLoadSuccess={({ numPages }) => setPagesMax(numPages)}
             file={data.pdf}
             className="pdf">
-            <Page pageNumber={1} renderTextLayer={false} renderAnnotationLayer={false} />
+            <Page
+              pageNumber={page}
+              renderTextLayer={false}
+              renderAnnotationLayer={false} />
           </Document>
-        </div><div className="page-controlls">
-            <input type="button" value="+" className="page-controll" />
-            <input type="number" name="page" id="page" />
-            <input type="button" value="-" className="page-controll" />
-          </div></>
+        </div>
+        <div className="page-controlls">
+          <input type="button" value="-" className="page-controll" onClick={() => { pageHandler(-1) }}/>
+            <input type="number" name="page" id="page" value={page} onChange={handleChange} onFocus={handleFocus} onClick={handleFocus}/>
+          <input type="button" value="+" className="page-controll" onClick={() => { pageHandler(1) }}/>
+        </div>
       </div>
 
     )

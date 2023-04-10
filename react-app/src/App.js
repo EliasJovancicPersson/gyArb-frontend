@@ -37,7 +37,7 @@ function App () {
       <Routes>
         <Route exact path="/" element={<HomePage />} />
         <Route exact path="/work" element={<WorkList maxResults={9} />} />
-        <Route exact path="/work/upload" element={<Upload />} />
+        <Route exact path="/work/upload" element={<Upload user={JSON.parse(localStorage.getItem('user'))}/>} />
         <Route path="/login" element={<Login func={SetLoggedIn} />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/work/:projId" element={<Work />} />

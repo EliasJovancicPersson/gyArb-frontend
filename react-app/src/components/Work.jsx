@@ -1,4 +1,4 @@
-import './styles/Work.css'
+import styles from './styles/Work.module.css'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { useState, useEffect } from 'react'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
@@ -41,22 +41,22 @@ function Work () {
 
   if (data) {
     return (
-      <div className="work-container">
-        <div className="pdf-container">
+      <div className={styles.work_container}>
+        <div className={styles.pdf_container}>
           <Document
             onLoadSuccess={({ numPages }) => setPagesMax(numPages)}
             file={data.pdf}
-            className="pdf">
+            className={styles.pdf}>
             <Page
               pageNumber={page}
               renderTextLayer={false}
               renderAnnotationLayer={false} />
           </Document>
         </div>
-        <div className="page-controlls">
-          <input type="button" value="-" className="page-controll" onClick={() => { pageHandler(-1) }}/>
+        <div className={styles.page_controlls}>
+          <input type="button" value="-" onClick={() => { pageHandler(-1) }}/>
             <input type="number" name="page" id="page" value={page} onChange={handleChange} onFocus={handleFocus} onClick={handleFocus}/>
-          <input type="button" value="+" className="page-controll" onClick={() => { pageHandler(1) }}/>
+          <input type="button" value="+" onClick={() => { pageHandler(1) }}/>
         </div>
       </div>
 

@@ -8,7 +8,7 @@ function HomePage () {
       <div className="page">
         <div className="intro">
           <div className="intro-txt">
-            <h2>Har du svårt för gymnasiearbeteet?</h2>
+            <h2>Har du svårt för gymnasiearbetet?</h2>
             <p>
               Om du har svårt för ditt gymnasiearbete kan vår hemsida vara en bra resurs att använda
               för att hitta hjälp och stöd. Genom att ladda upp ditt arbete på vår hemsida och be om

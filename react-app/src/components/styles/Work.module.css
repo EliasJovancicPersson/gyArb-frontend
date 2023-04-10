@@ -1,11 +1,11 @@
-.pdf-container{
+.pdf_container{
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.work-container{
+.work_container{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -22,14 +22,10 @@
   width: 25%;
 }
 
-.page-controlls{
+.page_controlls{
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.page-controll{
-  width: 15%;
 }
 
 input::-webkit-outer-spin-button,

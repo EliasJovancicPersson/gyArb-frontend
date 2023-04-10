@@ -1,0 +1,68 @@
+
+.form_container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.form{
+    margin-top: 100px;
+    width: 35%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.label_pdf{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border: dashed;
+    padding-bottom: 5px;
+    padding: 50px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.input_pdf{
+   display: none; 
+}
+.icon_pdf{
+    max-height: 150px;
+}
+.label_subject{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-self: flex-start;
+    margin-top: 30px;
+    flex-direction: column;
+    font-weight: bold;
+}
+.label_subject div{
+    display: flex;
+    margin: 5px;
+}
+.input_title,.input_author{
+    padding: 0;
+    border: none;
+    margin-bottom: 20px;
+    border-bottom: solid 2px;
+    font-size: 20px;
+    width: 40%;
+
+}
+.input_title:focus,.input_author:focus{
+    outline: none;
+    
+}
+.input_pdf_name{
+    font-weight: lighter;
+    text-decoration: underline;
+    margin-top: 5px;
+}
+.project_info{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}

@@ -5,7 +5,8 @@ import { useState } from 'react'
 function Signup () {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const [username, setUsername] = useState()
+  const [fName, setFname] = useState()
+  const [lName, setlname] = useState()
 
   // eslint-disable-next-line no-unused-vars
   async function SignupUser (credentials) {
@@ -17,14 +18,15 @@ function Signup () {
       credentials: 'include',
       body: new URLSearchParams({
         email: credentials.email,
-        password: credentials.password
+        password: credentials.password,
+        fullName: credentials.fName + ' ' + credentials.lName
       })
     })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignupUser({ email, password, username, name })
+    await SignupUser({ email, password, fName, lName })
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.status + ' ' + response.statusText)

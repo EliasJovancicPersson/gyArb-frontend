@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom'
 import './styles/Profile.css'
 import WorkList from './WorkList'
 import PropTypes from 'prop-types'
 
 function Profile (props) {
   const user = JSON.parse(localStorage.getItem('user'))
+  const navigate = useNavigate()
 
   return (
     <>
@@ -26,6 +28,7 @@ function Profile (props) {
                   credentials: 'include'
                 }).then(() => {
                   props.func(false)
+                  navigate('/')
                 })
               }}>
               Logga ut

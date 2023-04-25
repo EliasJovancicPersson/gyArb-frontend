@@ -7,7 +7,7 @@ import Work from './components/Work'
 import Profile from './components/Profile'
 import Signup from './components/Signup'
 import Upload from './components/Upload'
-import { Route, Routes, useNavigate } from 'react-router-dom'
+import { useNavigate, Route, Routes } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
 function App () {
@@ -18,12 +18,14 @@ function App () {
     //  function is passed to login component
     setSignedIn(bool)
     localStorage.setItem('authenticated', bool)
-    navigate('/')
   }
 
   function CheckLoggedIn () {
     if (localStorage.getItem('authenticated') === 'true') {
       setSignedIn(true)
+    } else {
+      setSignedIn(false)
+      navigate('/')
     }
   }
 

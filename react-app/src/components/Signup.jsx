@@ -1,5 +1,5 @@
 import './styles/Signup.css'
-import { Link, Navigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 
 function Signup () {
@@ -8,8 +8,9 @@ function Signup () {
   const [username, setUsername] = useState()
   const [fName, setFname] = useState()
   const [lName, setlname] = useState()
+  const navigate = useNavigate()
 
-  async function SignupUser (credentials) {
+  async function SignupUser (credentials) { // TODO : try catch
     return fetch('http://localhost:8000/auth/register', {
       method: 'POST',
       headers: {
@@ -32,11 +33,9 @@ function Signup () {
         if (!response.ok) {
           throw new Error(response.status + ' ' + response.statusText)
         } else {
-          return response
+          navigate('/login')
+          console.log('redirect')
         }
-      })
-      .then(() => {
-        Navigate('/login')
       })
   }
 

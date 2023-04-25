@@ -5,12 +5,12 @@ import { useState } from 'react'
 function Signup () {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
+  const [username, setUsername] = useState()
   const [fName, setFname] = useState()
   const [lName, setlname] = useState()
 
-  // eslint-disable-next-line no-unused-vars
   async function SignupUser (credentials) {
-    return fetch('https://gyarb-backend.azurewebsites.net/auth/signup', {
+    return fetch('http://localhost:8000/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -19,6 +19,7 @@ function Signup () {
       body: new URLSearchParams({
         email: credentials.email,
         password: credentials.password,
+        username: credentials.username,
         fullName: credentials.fName + ' ' + credentials.lName
       })
     })
@@ -26,7 +27,7 @@ function Signup () {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignupUser({ email, password, fName, lName })
+    await SignupUser({ email, password, fName, lName, username })
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.status + ' ' + response.statusText)
@@ -43,7 +44,6 @@ function Signup () {
     <div className="container column-center">
       <div id="signup-container">
         <form id="signup-form" onSubmit={handleSubmit}>
-          <h1>Skapa Konto</h1>
           <input
             type="text"
             name="email"
@@ -54,18 +54,34 @@ function Signup () {
           <input
             type="text"
             name="username"
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setUsername(e.target.value)}
             placeholder="Användarnamn"
             id="username"
           />
+          <div className='form-name'>
+            <input
+              type="text"
+              name="fName"
+              onChange={(e) => setFname(e.target.value)}
+              placeholder="Förnamn"
+              id="fName"
+            />
+            <input
+              type="text"
+              name="lName"
+              onChange={(e) => setlname(e.target.value)}
+              placeholder="Efternamn"
+              id="lName"
+            />
+          </div>
           <input
             type="password"
             name="password"
-            onChange={(e) => setUsername(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="lösenord"
             id="password"
           />
-          <input type="button" value="Skapa Konto" id="signup" />
+          <input type="submit" value="Skapa Konto" id="signup" />
           <div className="login">
             <p>Har du redan ett konto?</p>
             <Link to={'/login'}>Logga in</Link>

@@ -1,26 +1,57 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import './styles/Login.css'
 import PropTypes from 'prop-types'
 
-async function loginUser (credentials) {
-  return fetch('https://gyarb-backend.azurewebsites.net/auth/login', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    credentials: 'include',
-    body: new URLSearchParams({
-      email: credentials.email,
-      password: credentials.password
+async function loginUser (credentials, isGoogleLogin) {
+  if (!isGoogleLogin) {
+    return fetch('http://localhost:8000/auth/login', { // TODO : change back to api on the web
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      credentials: 'include',
+      body: new URLSearchParams({
+        email: credentials.email,
+        password: credentials.password
+      })
     })
-  })
+  } else {
+    return fetch('http://localhost:8000/auth/login', { // TODO : change back to api on the web
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      credentials: 'include',
+      body: new URLSearchParams({
+        jwt: credentials.jwt
+      })
+    })
+  }
 }
 
 function Login (props) {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
   const navigate = useNavigate()
+
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({ client_id: '1018800979482-4l8e73ndjgvksei3vu3el632vre3glpd.apps.googleusercontent.com', callback: handleCallbackResponse })
+    google.accounts.id.renderButton(
+      document.getElementById('signInGoogle'), {
+        theme: 'outline', size: 'large'
+      }
+    )
+  }, [])
+
+  function handleCallbackResponse (response) {
+    const jwtToken = response.credential
+    console.log(jwtToken)
+    loginUser({ jwt: jwtToken }, true)
+
+    // TODO : send jwt token to backend to verify and create account with
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -68,6 +99,7 @@ function Login (props) {
             id="password"
           />
           <input type="submit" value="Login" id="login" />
+          <div id='signInGoogle'></div>
           <div className="signup-form">
             <p>Inget Konto?</p>
             <Link to={'/signup'}>Registrera dig</Link>

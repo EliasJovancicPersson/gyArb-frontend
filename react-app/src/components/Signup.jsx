@@ -34,7 +34,6 @@ function Signup () {
           throw new Error(response.status + ' ' + response.statusText)
         } else {
           navigate('/login')
-          console.log('redirect')
         }
       })
   }

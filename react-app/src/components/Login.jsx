@@ -67,8 +67,8 @@ function Login (props) {
       .then((response) => response.json())
       .then((response) => {
         if (response.authenticated) {
-          props.func(true)
           localStorage.setItem('user', JSON.stringify(response.user))
+          props.func(true)
           navigate('/')
           //    JSON.parse(localStorage.getItem("user"))  to get user object
         } else {

@@ -4,7 +4,6 @@ import WorkList from './WorkList'
 import PropTypes from 'prop-types'
 
 function Profile (props) {
-  const user = JSON.parse(localStorage.getItem('user'))
   const navigate = useNavigate()
 
   return (
@@ -12,8 +11,8 @@ function Profile (props) {
       <div className="profile">
         <div className="settings">
           <h2>Konto information</h2>
-          <input type="text" defaultValue={user.name} />
-          <input type="email" defaultValue={user.email} />
+          <input type="text" defaultValue={props.user.name} />
+          <input type="email" defaultValue={props.user.email} />
           <div className="changePass">
             <input type="password" placeholder="old password" />
             <input type="password" placeholder="new password" />
@@ -37,7 +36,7 @@ function Profile (props) {
         </div>
         <div className="works">
           <h2>Dina arbeten</h2>
-          <WorkList query={'author=' + user.name} maxResults={4} />
+          <WorkList query={'author=' + props.user.name} maxResults={4} />
         </div>
       </div>
     </>
@@ -45,7 +44,8 @@ function Profile (props) {
 }
 
 Profile.propTypes = {
-  func: PropTypes.function
+  func: PropTypes.function,
+  user: PropTypes.object
 }
 
 export default Profile

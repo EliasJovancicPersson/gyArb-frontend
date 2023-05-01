@@ -21,7 +21,7 @@ function App () {
   }
 
   function CheckLoggedIn () {
-    if (localStorage.getItem('authenticated') === 'true') {
+    if (localStorage.getItem('authenticated') === 'true' && localStorage.getItem('user')) {
       setSignedIn(true)
     } else {
       setSignedIn(false)

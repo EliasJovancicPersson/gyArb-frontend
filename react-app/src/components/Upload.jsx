@@ -17,7 +17,7 @@ function Upload (props) {
 
   const [data, setData] = useState({
     title: 'null',
-    author: props.user.name,
+    author: props.user.username,
     subject: 'naturvetenskapsprogrammet'
   })
   const [file, setFile] = useState()
@@ -26,7 +26,7 @@ function Upload (props) {
     e.preventDefault()
     const formData = new FormData()
     formData.append('title', data.title)
-    formData.append('author', props.user.name)
+    formData.append('author', props.user.username)
     formData.append('subject', data.subject)
     formData.append('pdf', file)
     fetch('http://localhost:8000/wiki', {
@@ -67,7 +67,7 @@ function Upload (props) {
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.project_info}>
                     <input type="text" name='title' className={styles.input_title} placeholder='Titel' onChange={handleDataChange} />
-                    <input type="text" name='author' className={styles.input_author} value={props?.user.name} readOnly/>
+                    <input type="text" name='author' className={styles.input_author} value={props?.user.username} readOnly/>
                 </div>
                 <label htmlFor="pdf" className={styles.label_pdf}>
                     <input type="file" name="pdf" id="pdf" className={styles.input_pdf} onChange={handleDataChange}/>

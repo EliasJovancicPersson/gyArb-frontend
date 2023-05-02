@@ -3,7 +3,8 @@ import { Document, Page, pdfjs } from 'react-pdf'
 import { useState, useEffect } from 'react'
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`
 function Work () {
-  const projId = '2c478253-c00e-44f2-b17c-ba42e1131821'
+  const projId = window.location.pathname.split('/').pop()
+  console.log(projId)
   const url = 'https://gyarb-backend.azurewebsites.net/wiki/' + projId
   const [data, setData] = useState(null)
   const [pagesMax, setPagesMax] = useState(null)

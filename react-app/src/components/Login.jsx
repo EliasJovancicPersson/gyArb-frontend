@@ -48,7 +48,25 @@ function Login (props) {
   function handleCallbackResponse (response) {
     const jwtToken = response.credential
     console.log(jwtToken)
-    loginUser({ jwt: jwtToken }, true)
+    loginUser({ jwt: jwtToken }, true).then((response) => {
+      if (!response.ok) {
+        throw new Error(response.status + ' ' + response.statusText)
+      } else return response
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response.authenticated) {
+          localStorage.setItem('user', JSON.stringify(response.user))
+          props.func(true)
+          navigate('/')
+        //    JSON.parse(localStorage.getItem("user"))  to get user object
+        } else {
+          props.func(false)
+        }
+      })
+      .catch((err) => {
+        console.log(err)
+      })
 
     // TODO : send jwt token to backend to verify and create account with
   }

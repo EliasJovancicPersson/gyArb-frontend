@@ -5,12 +5,11 @@ import { useState } from 'react'
 function Signup () {
   const [email, setEmail] = useState()
   const [password, setPassword] = useState()
-  const [username, setUsername] = useState()
   const [fName, setFname] = useState()
   const [lName, setlname] = useState()
   const navigate = useNavigate()
 
-  async function SignupUser (credentials) { // TODO : try catch
+  async function SignupUser (credentials) { // TODO: try catch
     return fetch('http://localhost:8000/auth/register', {
       method: 'POST',
       headers: {
@@ -20,22 +19,26 @@ function Signup () {
       body: new URLSearchParams({
         email: credentials.email,
         password: credentials.password,
-        username: credentials.username,
         fullName: credentials.fName + ' ' + credentials.lName
       })
-    })
+    }).then(response => response.json()).then((response) => {
+      // TODO: get response.value[0] to get what field that is not unique
+      return response
+    }).catch((err) => { console.log(err) })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await SignupUser({ email, password, fName, lName, username })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.status + ' ' + response.statusText)
+    await SignupUser({ email, password, fName, lName })
+      .then((response) => { // response is defined now due to two return statements in SignupUser()
+        console.log(response)
+        if (!response.ok) { // need way to see if response is valid or error
+          console.log(response)
         } else {
+          setPassword('') // remove password from state after
           navigate('/login')
         }
-      })
+      }).catch((err) => { console.log(err) })
   }
 
   return (
@@ -49,13 +52,6 @@ function Signup () {
             placeholder="E-post adress"
             id="email"
           />
-          <input
-            type="text"
-            name="username"
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Användarnamn"
-            id="username"
-          />
           <div className='form-name'>
             <input
               type="text"
@@ -63,6 +59,7 @@ function Signup () {
               onChange={(e) => setFname(e.target.value)}
               placeholder="Förnamn"
               id="fName"
+              maxLength={20}
             />
             <input
               type="text"
@@ -70,6 +67,7 @@ function Signup () {
               onChange={(e) => setlname(e.target.value)}
               placeholder="Efternamn"
               id="lName"
+              maxLength={30}
             />
           </div>
           <input

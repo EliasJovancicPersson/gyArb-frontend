@@ -1,26 +1,29 @@
 import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 import styles from '../components/styles/Upload.module.css'
 import pdfIcon from '../images/Icons/pdfIcon.svg'
 import PropTypes from 'prop-types'
 
+const subjects = [
+  'naturvetenskapsprogrammet',
+  'teknikprogrammet',
+  'ekonomiprogrammet',
+  'humanistiskaprogrammet',
+  'samhällsvetenskapligaprogrammet',
+  'estetiskaprogrammet',
+  'internationall-baccalaureate'
+]
+
 function Upload (props) {
-  const subjects = [
-    'naturvetenskapsprogrammet',
-    'teknikprogrammet',
-    'ekonomiprogrammet',
-    'humanistiskaprogrammet',
-    'samhällsvetenskapligaprogrammet',
-    'estetiskaprogrammet',
-    'internationall-baccalaureate'
-  ]
   const [fileUploaded, setFileUploaded] = useState(false)
+
+  const [file, setFile] = useState()
 
   const [data, setData] = useState({
     title: 'null',
     author: props.user.username,
     subject: 'naturvetenskapsprogrammet'
   })
-  const [file, setFile] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -29,7 +32,7 @@ function Upload (props) {
     formData.append('author', props.user.username)
     formData.append('subject', data.subject)
     formData.append('pdf', file)
-    fetch('http://localhost:8000/wiki', {
+    const promise = fetch('http://localhost:8000/wiki', {
       method: 'POST',
       body: formData
     })
@@ -44,6 +47,11 @@ function Upload (props) {
           // display loading thing
         }
       })
+    toast.promise(promise, {
+      loading: 'Laddar...',
+      success: 'Ditt arbete är nu uppladdat.',
+      error: 'Oj! något gick fel.'
+    })
   }
 
   const handleDataChange = (e) => {
@@ -59,7 +67,6 @@ function Upload (props) {
   }
 
   useEffect(() => {
-    console.log(data)
   }, [data])
 
   return (
@@ -85,6 +92,10 @@ function Upload (props) {
                     </select>
                 </label>
                 <input type="submit" value="submit" />
+                <Toaster
+                containerStyle={{
+                  top: 90
+                }}/>
             </form>
         </div>
   )

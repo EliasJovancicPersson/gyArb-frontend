@@ -3,9 +3,9 @@ import { Link, useNavigate } from 'react-router-dom'
 import './styles/Login.css'
 import PropTypes from 'prop-types'
 
-async function loginUser (credentials, isGoogleLogin) {
+async function loginUser (credentials, isGoogleLogin = false) { // standard login is normal login
   if (!isGoogleLogin) {
-    return fetch('http://localhost:8000/auth/login', { // TODO : change back to api on the web
+    return fetch('http://localhost:8000/auth/login', { // TODO: change back to api on the web
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -17,7 +17,7 @@ async function loginUser (credentials, isGoogleLogin) {
       })
     })
   } else {
-    return fetch('http://localhost:8000/auth/login', { // TODO : change back to api on the web
+    return fetch('http://localhost:8000/auth/login', { // TODO: change back to api on the web
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -59,7 +59,6 @@ function Login (props) {
           localStorage.setItem('user', JSON.stringify(response.user))
           props.func(true)
           navigate('/')
-        //    JSON.parse(localStorage.getItem("user"))  to get user object
         } else {
           props.func(false)
         }
@@ -67,8 +66,6 @@ function Login (props) {
       .catch((err) => {
         console.log(err)
       })
-
-    // TODO : send jwt token to backend to verify and create account with
   }
 
   const handleSubmit = async (e) => {
@@ -88,7 +85,6 @@ function Login (props) {
           localStorage.setItem('user', JSON.stringify(response.user))
           props.func(true)
           navigate('/')
-          //    JSON.parse(localStorage.getItem("user"))  to get user object
         } else {
           props.func(false)
         }
